@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProductsList } from "@src/core/http/products/produtcs.http";
 import { IProductInfo } from "@src/core/interfaces/IProductInfo";
 
 const initialState = {

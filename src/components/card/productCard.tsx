@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { TAG } from "@src/core/enums/tag";
 
 function ProductCard(props: { productInfo: IProductInfo }) {
-  const [product, setProduct] = useState<IProductInfo>(props.productInfo);
+  const [product, _] = useState<IProductInfo>(props.productInfo);
   const [tagDescription, setTagDescription] = useState("");
 
   useEffect(() => {
