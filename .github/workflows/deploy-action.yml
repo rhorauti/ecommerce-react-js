@@ -13,7 +13,9 @@ jobs:
       - name: Get Code
         uses: actions/checkout@v4
       - name: Install dependencies and run build
-        uses: npm ci && npm run build
+        run: |
+          npm ci
+          npm run build
       - name: Configure credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -21,4 +23,4 @@ jobs:
           aws-region: us-east-1
       - name: Enviar para o S3
         run: |
-          aws s3 sync ./dist s3://rhorauti-ecommerce-react --delete --acl public-read
+          aws s3 sync ./build s3://rhorauti-ecommerce-react --delete --cache-control "max-age=3600"
