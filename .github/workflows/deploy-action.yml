@@ -23,4 +23,4 @@ jobs:
           aws-region: us-east-1
       - name: Enviar para o S3
         run: |
-          aws s3 sync ./build s3://rhorauti-ecommerce-react --delete --cache-control "max-age=3600"
+          aws s3 sync ./dist s3://rhorauti-ecommerce-react --delete --cache-control "max-age=3600"
