@@ -31,7 +31,7 @@ function Redirect() {
   }
 
   return (
-    <div className="bg-standard-gray flex flex-col h-screen w-full justify-center items-center overflow-auto p-7">
+    <div className="bg-standard-gray flex flex-col h-screen w-full justify-center items-center overflow-hidden p-7">
       <div className="md:w-1/3 w-full">
         <p className="text-center text-lg font-bold mb-4">{message}</p>
         <Button emitClickEvent={onRedirect} btnColor="blue" label="Voltar para login" />

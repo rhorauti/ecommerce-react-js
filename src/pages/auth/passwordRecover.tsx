@@ -50,7 +50,7 @@ export function PasswordRecover() {
 
   return (
     <div>
-      <div className="bg-standard-gray flex h-screen w-full justify-center overflow-auto p-7">
+      <div className="bg-standard-gray flex h-screen w-full justify-center overflow-hidden p-7">
         <div className="m-auto flex w-full max-w-2xl flex-col justify-between rounded-lg bg-white p-7 shadow-2xl md:w-4/5 lg:w-3/5">
           <div>
             <p className="text-2xl font-bold">Recuperaçao de Senha</p>
