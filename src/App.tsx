@@ -1,7 +1,13 @@
+import Menu from "./components/menu/menu";
 import RoutesApp from "./router/router";
 
 function App() {
-  return <RoutesApp />;
+  return (
+    <div>
+      <Menu />
+      <RoutesApp />
+    </div>
+  );
 }
 
 export default App;

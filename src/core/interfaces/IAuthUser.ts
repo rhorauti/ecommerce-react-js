@@ -1,5 +1,5 @@
 export interface IRequestSignup {
-  username: string;
+  name: string;
   email: string;
   password: string;
   avatar?: string;
@@ -28,7 +28,7 @@ export interface IResponseLogin {
   message: string;
   data: {
     id: string;
-    username: string;
+    name: string;
     email: string;
     avatar: string;
   };

@@ -7,7 +7,6 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 function Redirect() {
   const [message, setMessage] = useState("");
   const [searchParams] = useSearchParams("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const token = searchParams.get("token");
@@ -24,6 +23,8 @@ function Redirect() {
     }
     verifyToken();
   }, []);
+
+  const navigate = useNavigate();
 
   function onRedirect() {
     navigate("/login");

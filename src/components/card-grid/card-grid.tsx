@@ -13,7 +13,7 @@ function CardGrid(props: CardGridProps) {
       {title.length > 0 && <p className="font-bold text-2xl">{title}</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {itemList.map((item) => (
-          <ProductCard productInfo={item}></ProductCard>
+          <ProductCard key={item.id} productInfo={item}></ProductCard>
         ))}
       </div>
     </div>

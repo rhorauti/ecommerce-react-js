@@ -5,7 +5,7 @@ import ModalInfo from "@src/components/modal/modal-info";
 import { sendEmailRecover } from "@src/core/http/auth/userAuth";
 import { IAxiosResponseError } from "@src/core/interfaces/IAxiosResponseError";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 export function PasswordRecover() {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +16,6 @@ export function PasswordRecover() {
     message: "",
   });
 
-  const navigate = useNavigate();
   let isPasswordRecoverOk = false;
 
   async function sendRecoverEmail() {
@@ -43,7 +42,7 @@ export function PasswordRecover() {
 
   function onModalInfoCloseEvent(): void {
     if (isPasswordRecoverOk) {
-      navigate("/login");
+      redirect("/login");
       isPasswordRecoverOk = false;
     }
     setModalConfig((prevState) => ({ ...prevState, isActive: false }));

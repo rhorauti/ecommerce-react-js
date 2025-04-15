@@ -2,10 +2,10 @@ import Button from "@src/components/button/button";
 import Input from "@src/components/input/input";
 import Loading from "@src/components/loading/loading";
 import ModalInfo from "@src/components/modal/modal-info";
-import { checkValidToken, updateUserPassword } from "@src/core/http/auth/userAuth";
+import { updateUserPassword } from "@src/core/http/auth/userAuth";
 import { IAxiosResponseError } from "@src/core/interfaces/IAxiosResponseError";
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 function NewPassword() {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,11 +27,14 @@ function NewPassword() {
     }
   }, [searchParams]);
 
+  const [_, setIsNewPasswordOk] = useState(false);
+
   async function updatePassword(): Promise<void> {
     setIsLoading(true);
     try {
       const response = await updateUserPassword(newPassword, token as string);
       if (response.status) {
+        setIsNewPasswordOk(true);
         setModalConfig(() => ({ isActive: true, iconType: "success", message: response.message }));
       } else {
         throw new Error("Falha ao cadastrar a nova senha!");
@@ -51,6 +54,16 @@ function NewPassword() {
   useEffect(() => {
     isPasswordOk ? setIsBtnDisabled(false) : setIsBtnDisabled(true);
   }, [isPasswordOk]);
+
+  const navigate = useNavigate();
+
+  function onModalInfoCloseEvent(): void {
+    if (isPasswordOk) {
+      navigate("/login");
+      setIsNewPasswordOk(false);
+    }
+    setModalConfig((prevState) => ({ ...prevState, isActive: false }));
+  }
 
   return (
     <div>
@@ -89,9 +102,7 @@ function NewPassword() {
       </div>
       <ModalInfo
         isModalInfoActive={modalConfig.isActive}
-        closeModalInfoEvent={() =>
-          setModalConfig((prevState) => ({ ...prevState, isActive: false }))
-        }
+        closeModalInfoEvent={() => onModalInfoCloseEvent()}
         iconType={modalConfig.iconType}
         description={modalConfig.message}
       />

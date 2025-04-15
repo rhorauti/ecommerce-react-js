@@ -12,13 +12,13 @@ import { IAxiosResponseError } from "@src/core/interfaces/IAxiosResponseError";
 function Signup() {
   const [isLoading, setIsLoading] = useState(false);
   const [signupData, setSignupData] = useState<IRequestSignup>({
-    username: "",
+    name: "",
     email: "",
     password: "",
     avatar: "",
   });
   const [signupRequirementsOk, setSignupRequirementsOk] = useState({
-    isUsernameOk: false,
+    isNameOk: false,
     isEmailOk: false,
     isPasswordOk: false,
   });
@@ -28,15 +28,14 @@ function Signup() {
     message: "",
   });
   const [isBtnDisabled, setIsBtnDisabled] = useState(true);
-  const navigate = useNavigate();
-  let isSignupOk = false;
+  const [isSignupOk, setIsSignupOk] = useState(false);
 
   async function registerNewUser(): Promise<void> {
     setIsLoading(true);
     try {
       const response = await createUser(signupData);
       if (response.status) {
-        isSignupOk = true;
+        setIsSignupOk(true);
         setModalConfig(() => ({
           isActive: true,
           iconType: "success",
@@ -61,7 +60,7 @@ function Signup() {
 
   useEffect(() => {
     if (
-      signupRequirementsOk.isUsernameOk &&
+      signupRequirementsOk.isNameOk &&
       signupRequirementsOk.isEmailOk &&
       signupRequirementsOk.isPasswordOk
     ) {
@@ -70,15 +69,17 @@ function Signup() {
       setIsBtnDisabled(true);
     }
   }, [
-    signupRequirementsOk.isUsernameOk,
+    signupRequirementsOk.isNameOk,
     signupRequirementsOk.isEmailOk,
     signupRequirementsOk.isPasswordOk,
   ]);
 
+  const navigate = useNavigate();
+
   function onModalInfoCloseEvent(): void {
     if (isSignupOk) {
       navigate("/login");
-      isSignupOk = false;
+      setIsSignupOk(false);
     }
     setModalConfig((prevState) => ({ ...prevState, isActive: false }));
   }
@@ -99,13 +100,13 @@ function Signup() {
                 inputValue={(value) =>
                   setSignupData((prevState) => ({
                     ...prevState,
-                    username: value,
+                    name: value,
                   }))
                 }
-                nameOk={(isUsernameOk) =>
+                nameOk={(isNameOk) =>
                   setSignupRequirementsOk((prevState) => ({
                     ...prevState,
-                    isUsernameOk: isUsernameOk,
+                    isNameOk: isNameOk,
                   }))
                 }
               />

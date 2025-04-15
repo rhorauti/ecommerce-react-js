@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "@src/components/button/button";
 import { IRequestLogin } from "@src/core/interfaces/IAuthUser";
@@ -8,7 +8,7 @@ import ModalInfo from "@src/components/modal/modal-info";
 import Loading from "@src/components/loading/loading";
 import { IAxiosResponseError } from "@src/core/interfaces/IAxiosResponseError";
 import { store } from "@src/store/store";
-import { getToken, setUserData } from "@src/store/auth.store";
+import { getToken, hideMenuBar, setUserData, showMenuBar } from "@src/store/auth.store";
 
 function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,8 +22,12 @@ function Login() {
     message: "",
   });
 
+  const [isLoginOk, setIsLoginOk] = useState(false);
   const navigate = useNavigate();
-  let isLoginOk = false;
+
+  useEffect(() => {
+    store.dispatch(hideMenuBar());
+  });
 
   async function loginUser(): Promise<void> {
     setIsLoading(true);
@@ -33,13 +37,13 @@ function Login() {
         store.dispatch(getToken({ token: response.token }));
         store.dispatch(
           setUserData({
-            username: response.data.username,
+            name: response.data.name,
             email: response.data.email,
             avatar: response.data.avatar,
           })
         );
         setModalConfig(() => ({ isActive: true, iconType: "success", message: response.message }));
-        isLoginOk = true;
+        setIsLoginOk(true);
       } else {
         throw new Error(response.message);
       }
@@ -57,8 +61,10 @@ function Login() {
 
   function onModalInfoCloseEvent(): void {
     if (isLoginOk) {
+      setIsLoginOk(false);
       navigate("/home");
-      isLoginOk = false;
+      setloginData(() => ({ email: "", password: "" }));
+      store.dispatch(showMenuBar());
     }
     setModalConfig((prevState) => ({ ...prevState, isActive: false }));
   }
@@ -106,14 +112,14 @@ function Login() {
             </p>
           </div>
           <div>
-            <Button emitClickEvent={loginUser} btnColor="blue" label="Login com o e-mail" />
-            <p className="my-3 text-center">OU</p>
-            <div className="mt-3">
+            <Button emitClickEvent={loginUser} btnColor="blue" label="Entrar" />
+            {/* <p className="my-3 text-center">OU</p> */}
+            {/* <div className="mt-3">
               <button className="flex w-full items-center justify-center rounded-lg border-2 border-gray-400 p-1 font-semibold hover:bg-gray-100">
                 <img src={"/img/logo-google.webp"} width="25" alt="Logo do Google" />
                 <span className="ml-3">Acessar com o Google</span>
               </button>
-            </div>
+            </div> */}
             <p className="mt-4 text-center">
               Não tem conta?{" "}
               <Link to="/signup" className="cursor-pointer font-bold">

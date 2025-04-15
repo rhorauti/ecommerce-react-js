@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  username: "",
+  Name: "",
   email: "",
   avatar: "",
   token: "",
+  isLoginOk: false,
+  isAdm: false,
 };
 
 const userSlice = createSlice({
@@ -16,14 +18,23 @@ const userSlice = createSlice({
     },
     setUserData: (
       state,
-      action: PayloadAction<{ username: string; email: string; avatar: string }>
+      action: PayloadAction<{ name: string; email: string; avatar: string }>
     ) => {
-      (state.username = action.payload.username),
+      (state.Name = action.payload.name),
         (state.email = action.payload.email),
         (state.avatar = action.payload.avatar);
+    },
+    showMenuBar: (state) => {
+      state.isLoginOk = true;
+    },
+    hideMenuBar: (state) => {
+      state.isLoginOk = false;
+    },
+    setIsAdmOk: (state) => {
+      state.isAdm = true;
     },
   },
 });
 
-export const { getToken, setUserData } = userSlice.actions;
+export const { getToken, setUserData, showMenuBar, hideMenuBar } = userSlice.actions;
 export default userSlice.reducer;

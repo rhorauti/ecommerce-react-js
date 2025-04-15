@@ -3,6 +3,7 @@ import "./carousel.css";
 import Icon from "@mdi/react";
 import { mdiArrowRight } from "@mdi/js";
 import ProductCard from "../card/productCard";
+import { useEffect, useState } from "react";
 
 type slideTypes = "products";
 
@@ -16,8 +17,7 @@ interface CarouselProps {
   slideType?: slideTypes;
   title?: string;
   description?: string;
-  carouselBackgroundColor?: string;
-  arrowBackgroundColor?: string;
+  color?: string;
 }
 
 function Carousel(props: CarouselProps) {
@@ -26,9 +26,9 @@ function Carousel(props: CarouselProps) {
     slideType = "products",
     title = "",
     description = "",
-    carouselBackgroundColor = "bg-slate-300",
-    arrowBackgroundColor = "bg-slate-500",
+    color = "gray",
   } = props;
+
   var settings = {
     dots: false,
     infinite: true,
@@ -74,6 +74,29 @@ function Carousel(props: CarouselProps) {
       },
     ],
   };
+
+  const [carouselBackgroundColor, setCarouselBackgroundColor] = useState("bg-slate-300");
+  const [arrowBackgroundColor, setArrowBackgroundColor] = useState("bg-slate-500");
+
+  useEffect(() => {
+    switch (color) {
+      case "red": {
+        setCarouselBackgroundColor("bg-red-300");
+        setArrowBackgroundColor("bg-red-500");
+        break;
+      }
+      case "green": {
+        setCarouselBackgroundColor("bg-green-400");
+        setArrowBackgroundColor("bg-green-600");
+        break;
+      }
+      case "gray": {
+        setCarouselBackgroundColor("bg-slate-300");
+        setArrowBackgroundColor("bg-slate-500");
+        break;
+      }
+    }
+  }, [color]);
 
   return (
     <div
