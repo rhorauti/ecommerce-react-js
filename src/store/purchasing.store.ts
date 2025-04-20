@@ -17,8 +17,8 @@ const initialState = {
   productsInfo: [] as IProductInfo[],
 };
 
-const productsSlice = createSlice({
-  name: "products",
+const purchasingSlice = createSlice({
+  name: "purchasing",
   initialState: initialState,
   reducers: {
     reset: (state) => {
@@ -33,8 +33,14 @@ const productsSlice = createSlice({
       state.productInfo.price = 0;
       state.productInfo.discount = 0;
     },
+    showCart: (state) => {
+      state.productInfo.isCart = true;
+    },
+    toggleIsFavorite: (state) => {
+      state.productInfo.isFavorite = !state.productInfo.isFavorite;
+    },
   },
 });
 
-export const { reset } = productsSlice.actions;
-export default productsSlice.reducer;
+export const { reset, showCart, toggleIsFavorite } = purchasingSlice.actions;
+export default purchasingSlice.reducer;

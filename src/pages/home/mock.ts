@@ -2,7 +2,8 @@ export const productsInfo = [
   {
     id: "a",
     img: "/img/img1.jpg",
-    description: "Description 1",
+    description:
+      "Description 1 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: false,
     isCart: false,
     rate: 2,
@@ -14,7 +15,8 @@ export const productsInfo = [
   {
     id: "b",
     img: "/img/img2.jpg",
-    description: "Description 2",
+    description:
+      "Description 2 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
     isCart: false,
     rate: 3,
@@ -26,19 +28,21 @@ export const productsInfo = [
   {
     id: "c",
     img: "/img/img3.jpg",
-    description: "Description 3",
+    description:
+      "Description 3 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
     isCart: false,
     rate: 3,
     sales: 15,
-    tag: 1,
+    tag: 0,
     price: 6.99,
     discount: 16,
   },
   {
     id: "d",
     img: "/img/img4.jpg",
-    description: "Description 4",
+    description:
+      "Description 4 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
     isCart: false,
     rate: 4,
@@ -50,7 +54,7 @@ export const productsInfo = [
   {
     id: "e",
     img: "/img/img5.jpg",
-    description: "Description 5",
+    description: "Description 5  ",
     isFavorite: true,
     isCart: true,
     rate: 5,
@@ -62,7 +66,8 @@ export const productsInfo = [
   {
     id: "f",
     img: "/img/img6.jpg",
-    description: "Description 6",
+    description:
+      "Description 6 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: false,
     isCart: true,
     rate: 1,
@@ -74,7 +79,8 @@ export const productsInfo = [
   {
     id: "g",
     img: "/img/img2.jpg",
-    description: "Description 7",
+    description:
+      "Description 7 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
     isCart: false,
     rate: 5,
@@ -86,7 +92,8 @@ export const productsInfo = [
   {
     id: "h",
     img: "/img/img3.jpg",
-    description: "Description 8",
+    description:
+      "Description 8 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
     isCart: true,
     rate: 1,

@@ -8,12 +8,10 @@ import {
   mdiLogout,
   mdiMagnify,
   mdiMapMarker,
-  mdiMenu,
 } from "@mdi/js";
 import Icon from "@mdi/react";
-import { AppState, store } from "@src/store/store";
+import { store } from "@src/store/store";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 
 function Menu() {
   const menuItems = [
@@ -25,11 +23,7 @@ function Menu() {
 
   const [showBox, setShowBox] = useState(false);
 
-  const isLoginOk = useSelector((state: AppState) => state.user.isLoginOk);
-
   function logout(): void {}
-
-  if (!isLoginOk) return null;
 
   return (
     <>
@@ -84,15 +78,9 @@ function Menu() {
           </div>
         </div>
         <ul className="flex justify-center items-center gap-3 p-2 bg-blue-800 w-full overflow-auto relative">
-          {menuItems.length > 3 && (
-            <li className="flex gap-2 px-3 py-1 rounded-2xl bg-slate-300 text-black hover:bg-slate-200 cursor-pointer">
-              <Icon path={mdiMenu} size={1} />
-              <span>Todos</span>
-            </li>
-          )}
-          {menuItems.map((item, index) => (
+          {menuItems.map((menu, index) => (
             <li key={index} className="cursor-pointer relative transition-all px-3 py-1">
-              <span className="z-10">{item.description}</span>
+              <span className="z-10">{menu.description}</span>
               <span className="absolute inset-0 transition-all border-2 border-transparent rounded-2xl hover:border-white -z-1" />
             </li>
           ))}

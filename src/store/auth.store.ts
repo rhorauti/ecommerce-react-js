@@ -5,7 +5,7 @@ const initialState = {
   email: "",
   avatar: "",
   token: "",
-  isLoginOk: false,
+  isLoginOk: true,
   isAdm: false,
 };
 

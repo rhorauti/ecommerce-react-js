@@ -3,10 +3,13 @@ import { mdiCartPlus, mdiHeart, mdiHeartOutline, mdiLightningBolt, mdiStar } fro
 import { IProductInfo as IProductInfo } from "@src/core/interfaces/IProductInfo";
 import { useEffect, useState } from "react";
 import { TAG } from "@src/core/enums/tag";
+import { useDispatch } from "react-redux";
+import { activateCart } from "@src/store/cart.store";
 
 function ProductCard(props: { productInfo: IProductInfo }) {
-  const [product, _] = useState<IProductInfo>(props.productInfo);
+  const [product, setProduct] = useState<IProductInfo>(props.productInfo);
   const [tagDescription, setTagDescription] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     switch (product.tag) {
@@ -24,12 +27,12 @@ function ProductCard(props: { productInfo: IProductInfo }) {
   }, [props.productInfo]);
 
   function onSetIsFavorite(): void {
-    // setProduct((prevState) => ({ ...prevState, isFavorite: !isFavorite }));
+    setProduct((state) => ({ ...state, isFavorite: !state.isFavorite }));
   }
 
   return (
-    <div className="flex flex-col w-full h-full">
-      <div className="relative h-full w-full">
+    <div className="flex flex-col">
+      <div className="relative">
         <div onClick={() => onSetIsFavorite()}>
           <Icon
             className="absolute right-2 top-2 cursor-pointer border-2 border-black bg-white rounded-full p-1"
@@ -43,19 +46,24 @@ function ProductCard(props: { productInfo: IProductInfo }) {
           className="w-full object-cover rounded-t-md border-slate-600 border-2 bg-slate-400"
         />
       </div>
-      <div className="relative flex flex-col gap-1 bg-slate-200 border-x-slate-600 border-b-slate-600 border-t-none border-2 h-full w-full p-3 -mt-0.5 rounded-b-md">
-        <p>{product.description}</p>
+      <div className="relative flex flex-col gap-2 h-36 bg-slate-200 border-x-slate-600 border-b-slate-600 border-t-none border-2 py-3 px-4 -mt-0.5 rounded-b-md">
+        <div className="flex gap-1">
+          <p className="line-clamp-2">
+            {(product.tag ?? 0) > 0 && (
+              <span className="inline-flex items-center bg-green-700 px-2 py-0.5 text-white rounded-md mr-1 align-middle">
+                <Icon path={mdiLightningBolt} size={0.7}></Icon>
+                <span className="text-xs">{tagDescription}</span>
+              </span>
+            )}
+            {product.description}
+          </p>
+        </div>
         <div className="flex items-center">
           <Icon path={mdiStar} size={0.8} className="text-yellow-400" />
           <span className="mx-1">{product.rate}</span>
           <span>({product.sales})</span>
         </div>
-        {product.tag && product.tag > 0 && (
-          <span className="flex justify-center bg-green-700 w-fit px-2 py-1 text-sm rounded-lg text-white">
-            <Icon path={mdiLightningBolt} size={0.7}></Icon>
-            <span>{tagDescription}</span>
-          </span>
-        )}
+
         <div className="flex gap-2 items-center">
           {product && product.price && product.discount && product.discount > 0 && (
             <span className="font-bold text-lg">
@@ -67,11 +75,13 @@ function ProductCard(props: { productInfo: IProductInfo }) {
           )}
           <span className="text-slate-400 font-semibold line-through">R$ {product.price}</span>
         </div>
-        <Icon
-          path={mdiCartPlus}
-          size={1.5}
-          className="bg-black text-white p-2 absolute right-3 bottom-3 cursor-pointer rounded-full"
-        />
+        <span onClick={() => dispatch(activateCart())}>
+          <Icon
+            path={mdiCartPlus}
+            size={1.5}
+            className="bg-black text-white p-2 absolute right-3 bottom-3 cursor-pointer rounded-full"
+          />
+        </span>
       </div>
     </div>
   );
