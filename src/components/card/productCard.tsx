@@ -4,7 +4,7 @@ import { IProductInfo as IProductInfo } from "@src/core/interfaces/IProductInfo"
 import { useEffect, useState } from "react";
 import { TAG } from "@src/core/enums/tag";
 import { useDispatch } from "react-redux";
-import { activateCart } from "@src/store/cart.store";
+import { showCart as showCart } from "@src/store/cart.store";
 
 function ProductCard(props: { productInfo: IProductInfo }) {
   const [product, setProduct] = useState<IProductInfo>(props.productInfo);
@@ -75,7 +75,7 @@ function ProductCard(props: { productInfo: IProductInfo }) {
           )}
           <span className="text-slate-400 font-semibold line-through">R$ {product.price}</span>
         </div>
-        <span onClick={() => dispatch(activateCart())}>
+        <span onClick={() => dispatch(showCart(true))}>
           <Icon
             path={mdiCartPlus}
             size={1.5}

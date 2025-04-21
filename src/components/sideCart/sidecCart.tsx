@@ -2,21 +2,27 @@ import { mdiClose, mdiMinus, mdiPlus } from "@mdi/js";
 import Icon from "@mdi/react";
 import { productsInfo } from "@src/pages/home/mock";
 import Button from "../button/button";
-import { useDispatch } from "react-redux";
-import { closeCart } from "@src/store/cart.store";
+import { useDispatch, useSelector } from "react-redux";
+import { showCart } from "@src/store/cart.store";
+import { AppState } from "@src/store/store";
 
-function Sidebar() {
+function SideCart() {
   const dispatch = useDispatch();
+  const selector = useSelector((state: AppState) => state.cart.visible);
+
+  function changeQty(qty: number, index: number): void {}
 
   return (
     <>
       <div
         id="sidebar-cart"
-        className="fixed top-0 -right-96 p-8 z-10 transition-all duration-500 text-white flex flex-col gap-7 bg-black w-full sm:w-96 h-full overflow-auto"
+        className={`${
+          selector ? "right-0" : "-right-96"
+        } fixed top-0 p-8 z-10 transition-all duration-500 text-white flex flex-col gap-7 bg-black w-full sm:w-96 h-full overflow-auto`}
       >
         <div className="flex justify-between items-center">
           <p>Carrinho</p>
-          <span onClick={() => dispatch(closeCart())}>
+          <span onClick={() => dispatch(showCart(false))}>
             <Icon
               path={mdiClose}
               size={0.9}
@@ -40,7 +46,10 @@ function Sidebar() {
                 />
                 <input
                   type="text"
-                  className="border border-white text-center text-black w-36 sm:w-14 h-8"
+                  onInput={(event) =>
+                    changeQty(Number((event.target as HTMLInputElement).value), idx)
+                  }
+                  className="border border-white text-center text-black w-36 sm:w-14 h-8 input-qty"
                 />
                 <Icon
                   className="border border-white hover:bg-gray-600 cursor-pointer p-1"
@@ -62,4 +71,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default SideCart;

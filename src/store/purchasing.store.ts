@@ -33,14 +33,11 @@ const purchasingSlice = createSlice({
       state.productInfo.price = 0;
       state.productInfo.discount = 0;
     },
-    showCart: (state) => {
-      state.productInfo.isCart = true;
-    },
     toggleIsFavorite: (state) => {
       state.productInfo.isFavorite = !state.productInfo.isFavorite;
     },
   },
 });
 
-export const { reset, showCart, toggleIsFavorite } = purchasingSlice.actions;
+export const { reset, toggleIsFavorite } = purchasingSlice.actions;
 export default purchasingSlice.reducer;

@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
 import Footer from "./components/footer/footer";
-import SideBar from "./components/sidebar/sidebar";
 import Menu from "./components/menu/menu";
 import RoutesApp from "./router/router";
+import SideCart from "./components/sideCart/sidecCart";
 
 function App() {
   const location = useLocation();
@@ -14,7 +14,7 @@ function App() {
       {isMenuAndFooterHidden && <Menu />}
       <div className="container bg-standard-white w-full h-full m-auto">
         <RoutesApp />
-        <SideBar />
+        <SideCart />
       </div>
       {isMenuAndFooterHidden && <Footer />}
     </>
