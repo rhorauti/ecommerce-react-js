@@ -2,6 +2,8 @@ export const productsInfo = [
   {
     id: "a",
     img: "/img/img1.jpg",
+    title: "title 12 asdfasfasdfasfsd asf as sad fsa fasdf asdfasfd",
+    qty: 1,
     description:
       "Description 1 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: false,
@@ -15,6 +17,8 @@ export const productsInfo = [
   {
     id: "b",
     img: "/img/img2.jpg",
+    title: "title 11",
+    qty: 1,
     description:
       "Description 2 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
@@ -28,6 +32,8 @@ export const productsInfo = [
   {
     id: "c",
     img: "/img/img3.jpg",
+    title: "title 10",
+    qty: 1,
     description:
       "Description 3 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
@@ -41,6 +47,8 @@ export const productsInfo = [
   {
     id: "d",
     img: "/img/img4.jpg",
+    title: "title 1",
+    qty: 1,
     description:
       "Description 4 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
@@ -54,6 +62,8 @@ export const productsInfo = [
   {
     id: "e",
     img: "/img/img5.jpg",
+    title: "title 2",
+    qty: 1,
     description: "Description 5  ",
     isFavorite: true,
     isCart: true,
@@ -66,6 +76,8 @@ export const productsInfo = [
   {
     id: "f",
     img: "/img/img6.jpg",
+    title: "title 3",
+    qty: 1,
     description:
       "Description 6 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: false,
@@ -79,6 +91,8 @@ export const productsInfo = [
   {
     id: "g",
     img: "/img/img2.jpg",
+    title: "title 4",
+    qty: 1,
     description:
       "Description 7 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,
@@ -92,6 +106,8 @@ export const productsInfo = [
   {
     id: "h",
     img: "/img/img3.jpg",
+    title: "title 5",
+    qty: 1,
     description:
       "Description 8 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: true,

@@ -10,10 +10,14 @@ import {
   mdiMapMarker,
 } from "@mdi/js";
 import Icon from "@mdi/react";
+import { showCart } from "@src/store/cart.store";
 import { store } from "@src/store/store";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 function Menu() {
+  const dispatch = useDispatch();
+
   const menuItems = [
     { id: 1, description: "Celulares" },
     { id: 2, description: "Tablets" },
@@ -64,7 +68,10 @@ function Menu() {
               ></Icon>
               <span className="text-xs whitespace-nowrap">Lista de desejos</span>
             </div>
-            <div className="hidden md:flex md:flex-col md:items-center md:cursor-pointer md:text-center">
+            <div
+              onClick={() => dispatch(showCart(true))}
+              className="hidden md:flex md:flex-col md:items-center md:cursor-pointer md:text-center"
+            >
               <Icon className="text-center whitespace-nowrap" path={mdiCartOutline} size={1}></Icon>
               <span className="text-xs">Carrinho</span>
             </div>
@@ -122,7 +129,10 @@ function Menu() {
           <Icon path={mdiHeartOutline} size={1}></Icon>
           <span className="text-xs whitespace-nowrap">Lista de desejos</span>
         </div>
-        <div className="flex flex-col items-center cursor-pointer text-center">
+        <div
+          onClick={() => dispatch(showCart(true))}
+          className="flex flex-col items-center cursor-pointer text-center"
+        >
           <Icon className="text-center whitespace-nowrap" path={mdiCartOutline} size={1}></Icon>
           <span className="text-xs">Carrinho</span>
         </div>

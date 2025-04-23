@@ -1,13 +1,13 @@
 import Icon from "@mdi/react";
 import { mdiCartPlus, mdiHeart, mdiHeartOutline, mdiLightningBolt, mdiStar } from "@mdi/js";
-import { IProductInfo as IProductInfo } from "@src/core/interfaces/IProductInfo";
+import { IProduct as IProduct } from "@src/core/interfaces/IProduct";
 import { useEffect, useState } from "react";
 import { TAG } from "@src/core/enums/tag";
 import { useDispatch } from "react-redux";
-import { showCart as showCart } from "@src/store/cart.store";
+import { saveCartItemsToLocalStorage, showCart } from "@src/store/cart.store";
 
-function ProductCard(props: { productInfo: IProductInfo }) {
-  const [product, setProduct] = useState<IProductInfo>(props.productInfo);
+function ProductCard(props: { productInfo: IProduct }) {
+  const [product, setProduct] = useState<IProduct>(props.productInfo);
   const [tagDescription, setTagDescription] = useState("");
   const dispatch = useDispatch();
 
@@ -24,10 +24,15 @@ function ProductCard(props: { productInfo: IProductInfo }) {
       default:
         setTagDescription("");
     }
-  }, [props.productInfo]);
+  }, [product]);
 
   function onSetIsFavorite(): void {
     setProduct((state) => ({ ...state, isFavorite: !state.isFavorite }));
+  }
+
+  function onAddCartItem(product: IProduct): void {
+    dispatch(saveCartItemsToLocalStorage(product));
+    dispatch(showCart(true));
   }
 
   return (
@@ -58,13 +63,13 @@ function ProductCard(props: { productInfo: IProductInfo }) {
             {product.description}
           </p>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center absolute bottom-12 left-4">
           <Icon path={mdiStar} size={0.8} className="text-yellow-400" />
           <span className="mx-1">{product.rate}</span>
           <span>({product.sales})</span>
         </div>
 
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center absolute bottom-3 left-4">
           {product && product.price && product.discount && product.discount > 0 && (
             <span className="font-bold text-lg">
               R${" "}
@@ -75,13 +80,12 @@ function ProductCard(props: { productInfo: IProductInfo }) {
           )}
           <span className="text-slate-400 font-semibold line-through">R$ {product.price}</span>
         </div>
-        <span onClick={() => dispatch(showCart(true))}>
-          <Icon
-            path={mdiCartPlus}
-            size={1.5}
-            className="bg-black text-white p-2 absolute right-3 bottom-3 cursor-pointer rounded-full"
-          />
-        </span>
+        <div
+          onClick={() => onAddCartItem(product)}
+          className="absolute right-3 bottom-3 cursor-pointer"
+        >
+          <Icon path={mdiCartPlus} size={1.5} className="bg-black text-white p-2 rounded-full" />
+        </div>
       </div>
     </div>
   );
