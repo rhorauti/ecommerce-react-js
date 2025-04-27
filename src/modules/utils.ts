@@ -35,7 +35,6 @@ export enum STORAGE_TYPE {
   WISHLIST = "rtVm7Z1eF7AICHoQx94j6Rw",
 }
 export function saveStorage(storage: STORAGE_TYPE, info: any) {
-  console.log("saveStorage", storage, info);
   localStorage.setItem(storage, safeEncryptU(JSON.stringify(info)));
 }
 export function loadStorage(storage: STORAGE_TYPE, remove: boolean = false) {

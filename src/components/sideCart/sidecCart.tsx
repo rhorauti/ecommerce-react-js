@@ -56,7 +56,7 @@ function SideCart() {
                           <div className="flex">
                             <span onClick={() => dispatch(onDecreaseQty(product))}>
                               <Icon
-                                className="border border-white hover:bg-gray-600 cursor-pointer p-1"
+                                className="border rounded-l-md border-white hover:bg-gray-600 cursor-pointer p-1"
                                 path={mdiMinus}
                                 size={1.32}
                               />
@@ -76,14 +76,14 @@ function SideCart() {
                             />
                             <span onClick={() => dispatch(onIncreaseQty(product))}>
                               <Icon
-                                className="border border-white hover:bg-gray-600 cursor-pointer p-1"
+                                className="border rounded-r-md border-white hover:bg-gray-600 cursor-pointer p-1"
                                 path={mdiPlus}
                                 size={1.32}
                               />
                             </span>
                             <span onClick={() => dispatch(removeCartItem(product))}>
                               <Icon
-                                className="ml-5 border text-red-500 border-red-500 hover:bg-red-300 cursor-pointer p-1"
+                                className="ml-5 border rounded-md text-red-500 border-red-500 hover:bg-red-300 cursor-pointer p-1"
                                 path={mdiTrashCan}
                                 size={1.32}
                               />

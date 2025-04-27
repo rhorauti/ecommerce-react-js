@@ -4,7 +4,8 @@ import { IProduct as IProduct } from "@src/core/interfaces/IProduct";
 import { useEffect, useState } from "react";
 import { TAG } from "@src/core/enums/tag";
 import { useDispatch } from "react-redux";
-import { saveCartItemsToLocalStorage, showCart } from "@src/store/cart.store";
+import { saveCartItemToLocalStorage, showCart } from "@src/store/cart.store";
+import { removeWishListItem, saveWishListItemsToLocalStorage } from "@src/store/wish-list.store";
 
 function ProductCard(props: { productInfo: IProduct }) {
   const [product, setProduct] = useState<IProduct>(props.productInfo);
@@ -27,11 +28,17 @@ function ProductCard(props: { productInfo: IProduct }) {
   }, [product]);
 
   function onSetIsFavorite(): void {
-    setProduct((state) => ({ ...state, isFavorite: !state.isFavorite }));
+    if (!product.isFavorite) {
+      setProduct((state) => ({ ...state, isFavorite: true }));
+      dispatch(saveWishListItemsToLocalStorage(product));
+    } else {
+      setProduct((state) => ({ ...state, isFavorite: false }));
+      dispatch(removeWishListItem(product));
+    }
   }
 
   function onAddCartItem(product: IProduct): void {
-    dispatch(saveCartItemsToLocalStorage(product));
+    dispatch(saveCartItemToLocalStorage(product));
     dispatch(showCart(true));
   }
 

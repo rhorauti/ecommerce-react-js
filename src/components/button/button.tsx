@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 
 interface ButtonProps {
   btnColor?: string;
+  btnClass?: string;
   label?: string;
   btnIsDisabled?: boolean;
   emitClickEvent?: () => void;
 }
 
 function Button(props: ButtonProps) {
-  const { btnColor = "black", label = "Fechar", btnIsDisabled = false } = props;
+  const { btnColor = "black", btnClass = "", label = "Fechar", btnIsDisabled = false } = props;
   const [color, setColor] = useState("");
 
   useEffect(() => {
@@ -45,7 +46,7 @@ function Button(props: ButtonProps) {
   return (
     <button
       onClick={props.emitClickEvent}
-      className={`w-full rounded-lg p-2 font-semibold text-white disabled:bg-gray-400 ${color}`}
+      className={`rounded-lg p-2 font-semibold text-white disabled:bg-gray-400 ${btnClass} ${color}`}
       disabled={btnIsDisabled}
     >
       {label}

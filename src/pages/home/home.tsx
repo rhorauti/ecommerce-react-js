@@ -1,8 +1,8 @@
-import Carousel from "@src/components/carrosel/carousel";
+import Carousel from "@src/components/carousel/carousel";
 import { productsInfo } from "./mock";
 import CardGrid from "@src/components/card-grid/card-grid";
-import { useEffect, useState } from "react";
-import { getProductsList } from "@src/core/http/products/produtcs.http";
+import { useEffect } from "react";
+// import { getProductsList } from "@src/core/http/products/produtcs.http";
 import Icon from "@mdi/react";
 import { mdiArrowRight } from "@mdi/js";
 import ProductCard from "@src/components/card/productCard";
@@ -10,23 +10,17 @@ import ProductCard from "@src/components/card/productCard";
 
 function Home() {
   // const productsInfo = store.getState().products.productsInfo;
-  const [image, setImage] = useState("");
-
   useEffect(() => {
-    const fetchProducts = async () => {
-      const products = await getProductsList();
-      //@ts-ignore
-      setImage(products.data);
-      //@ts-ignore
-      console.log(products.data);
-    };
+    // const fetchProducts = async () => {
+    //   const products = await getProductsList();
+    //   console.log(products);
+    // };
     // fetchProducts();
   }, []);
 
   return (
     <>
-      <img src={image} alt="" />
-      <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-4 px-10 py-7">
         <div className="flex flex-col gap-2 bg-green-400 rounded-md p-3 shadow-lg w-full overflow-auto">
           <div className="flex justify-between items-center mx-2">
             <div>

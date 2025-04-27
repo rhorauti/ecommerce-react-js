@@ -29,7 +29,7 @@ const cartSlice = createSlice({
     showCart: (state, action: PayloadAction<boolean>) => {
       state.visible = action.payload;
     },
-    saveCartItemsToLocalStorage: (state, action: PayloadAction<IProduct>) => {
+    saveCartItemToLocalStorage: (state, action: PayloadAction<IProduct>) => {
       const isProductExistOnCart = state.products.some(
         (product) => product.id == action.payload.id
       );
@@ -37,8 +37,17 @@ const cartSlice = createSlice({
         state.products.push({ ...action.payload, qty: 1 });
         saveStorage(STORAGE_TYPE.CARRINHO, state.products);
         state.totalPrice = calculateTotalPrice(state.products);
-        console.log("saveCartItemsToLocalStorage", state.products);
       }
+    },
+    saveAllWishListItemsToCartLocalStorage: (state, action: PayloadAction<IProduct[]>) => {
+      action.payload.forEach((wishListProduct) => {
+        const exists = state.products.some((cartProduct) => cartProduct.id == wishListProduct.id);
+        if (!exists) {
+          state.products.push({ ...wishListProduct, qty: 1 });
+        }
+      });
+      saveStorage(STORAGE_TYPE.CARRINHO, state.products);
+      state.totalPrice = calculateTotalPrice(state.products);
     },
     removeCartItem: (state, action: PayloadAction<IProduct>) => {
       const productIdx = state.products.findIndex((product) => action.payload.id == product.id);
@@ -77,12 +86,6 @@ const cartSlice = createSlice({
       }
       state.totalPrice = calculateTotalPrice(state.products);
     },
-    // calculateTotalPrice: (state) => {
-    //   const totalPrice = state.products.reduce((accumulate, product) => {
-    //     return accumulate + product.price * product.qty;
-    //   }, 0);
-    //   state.totalPrice = totalPrice;
-    // },
   },
 });
 
@@ -90,7 +93,8 @@ export const {
   showCart,
   getCartItemsFromLocalStorage,
   clearCart,
-  saveCartItemsToLocalStorage,
+  saveCartItemToLocalStorage,
+  saveAllWishListItemsToCartLocalStorage,
   removeCartItem,
   onIncreaseQty,
   onDecreaseQty,

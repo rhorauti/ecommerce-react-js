@@ -11,12 +11,21 @@ import {
 } from "@mdi/js";
 import Icon from "@mdi/react";
 import { showCart } from "@src/store/cart.store";
-import { store } from "@src/store/store";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { AppState, store } from "@src/store/store";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Badge from "../badge/badge";
+import { Link } from "react-router-dom";
+import { getWishListItemsFromLocalStorage } from "@src/store/wish-list.store";
 
 function Menu() {
   const dispatch = useDispatch();
+  const cartSelector = useSelector((state: AppState) => state.cart);
+  const wishListSelector = useSelector((state: AppState) => state.wishList);
+
+  useEffect(() => {
+    dispatch(getWishListItemsFromLocalStorage());
+  }, [dispatch]);
 
   const menuItems = [
     { id: 1, description: "Celulares" },
@@ -33,12 +42,14 @@ function Menu() {
     <>
       <div className="flex flex-col gap-1 sticky top-0 bg-blue-950 text-white z-10">
         <div className="flex py-2 md:px-4">
-          <img
-            src={"/img/logo.png"}
-            className="hidden md:block cursor-pointer"
-            width="40"
-            alt="Logo My Company"
-          />
+          <Link className="m-auto" to="/home">
+            <img
+              src={"/img/logo.png"}
+              className="hidden md:block cursor-pointer"
+              width="40"
+              alt="Logo My Company"
+            />
+          </Link>
           <div className="flex items-center gap-6 md:mx-4 mx-2 w-full">
             <div className="flex grow p-2 md:w-full overflow-auto">
               <select
@@ -61,18 +72,28 @@ function Menu() {
               </button>
             </div>
             <div className="hidden md:flex md:flex-col md:items-center md:cursor-pointer md:text-center">
-              <Icon
-                className="text-center whitespace-nowrap"
-                path={mdiHeartOutline}
-                size={1}
-              ></Icon>
-              <span className="text-xs whitespace-nowrap">Lista de desejos</span>
+              <Link to="/wish-list" className="flex flex-col justify-center items-center">
+                <Badge count={wishListSelector.products.length}>
+                  <Icon
+                    className="text-center whitespace-nowrap"
+                    path={mdiHeartOutline}
+                    size={1}
+                  ></Icon>
+                </Badge>
+                <span className="text-xs whitespace-nowrap">Lista de desejos</span>
+              </Link>
             </div>
             <div
               onClick={() => dispatch(showCart(true))}
               className="hidden md:flex md:flex-col md:items-center md:cursor-pointer md:text-center"
             >
-              <Icon className="text-center whitespace-nowrap" path={mdiCartOutline} size={1}></Icon>
+              <Badge count={cartSelector.products.length}>
+                <Icon
+                  className="text-center whitespace-nowrap"
+                  path={mdiCartOutline}
+                  size={1}
+                ></Icon>
+              </Badge>
               <span className="text-xs">Carrinho</span>
             </div>
             <div
@@ -126,8 +147,10 @@ function Menu() {
           <span className="text-xs whitespace-nowrap">Inicio</span>
         </div>
         <div className="flex flex-col items-center cursor-pointer text-center">
-          <Icon path={mdiHeartOutline} size={1}></Icon>
-          <span className="text-xs whitespace-nowrap">Lista de desejos</span>
+          <Link to="/wish-list" className="flex flex-col justify-center items-center">
+            <Icon className="text-center whitespace-nowrap" path={mdiHeartOutline} size={1}></Icon>
+            <span className="text-xs whitespace-nowrap">Lista de desejos</span>
+          </Link>
         </div>
         <div
           onClick={() => dispatch(showCart(true))}

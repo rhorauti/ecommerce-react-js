@@ -7,7 +7,6 @@ export const productsInfo = [
     description:
       "Description 1 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: false,
-    isCart: false,
     rate: 2,
     sales: 12,
     tag: 0,
@@ -21,8 +20,7 @@ export const productsInfo = [
     qty: 1,
     description:
       "Description 2 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
-    isFavorite: true,
-    isCart: false,
+    isFavorite: false,
     rate: 3,
     sales: 15,
     tag: 1,
@@ -36,8 +34,7 @@ export const productsInfo = [
     qty: 1,
     description:
       "Description 3 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
-    isFavorite: true,
-    isCart: false,
+    isFavorite: false,
     rate: 3,
     sales: 15,
     tag: 0,
@@ -51,8 +48,7 @@ export const productsInfo = [
     qty: 1,
     description:
       "Description 4 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
-    isFavorite: true,
-    isCart: false,
+    isFavorite: false,
     rate: 4,
     sales: 20,
     tag: 0,
@@ -65,8 +61,7 @@ export const productsInfo = [
     title: "title 2",
     qty: 1,
     description: "Description 5  ",
-    isFavorite: true,
-    isCart: true,
+    isFavorite: false,
     rate: 5,
     sales: 600,
     tag: 1,
@@ -81,7 +76,6 @@ export const productsInfo = [
     description:
       "Description 6 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
     isFavorite: false,
-    isCart: true,
     rate: 1,
     sales: 500,
     tag: 0,
@@ -95,8 +89,7 @@ export const productsInfo = [
     qty: 1,
     description:
       "Description 7 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
-    isFavorite: true,
-    isCart: false,
+    isFavorite: false,
     rate: 5,
     sales: 15,
     tag: 1,
@@ -110,8 +103,7 @@ export const productsInfo = [
     qty: 1,
     description:
       "Description 8 lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon lorem ipsulon ",
-    isFavorite: true,
-    isCart: true,
+    isFavorite: false,
     rate: 1,
     sales: 44,
     tag: 1,

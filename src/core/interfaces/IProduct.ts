@@ -5,7 +5,6 @@ export interface IProduct {
   qty: number;
   description?: string;
   isFavorite: boolean;
-  isCart: boolean;
   rate?: number;
   sales: number;
   tag?: number;

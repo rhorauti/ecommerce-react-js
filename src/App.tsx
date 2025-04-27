@@ -11,12 +11,14 @@ function App() {
 
   return (
     <>
-      {isMenuAndFooterHidden && <Menu />}
-      <div className="container bg-standard-white w-full h-full m-auto">
-        <RoutesApp />
-        <SideCart />
+      <div className="flex flex-col min-h-screen">
+        {isMenuAndFooterHidden && <Menu />}
+        <div className="container grow bg-standard-white w-full h-full m-auto">
+          <RoutesApp />
+          <SideCart />
+        </div>
+        {isMenuAndFooterHidden && <Footer />}
       </div>
-      {isMenuAndFooterHidden && <Footer />}
     </>
   );
 }
