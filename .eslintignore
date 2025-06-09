@@ -1,0 +1,10 @@
+node_modules
+build
+dist
+coverage
+babel.config.cjs
+jest.config.cjs
+.prettierrc
+.prettierignore
+fileMock.js
+svgMock.js

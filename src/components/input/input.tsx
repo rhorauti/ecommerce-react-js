@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import Icon from "@mdi/react";
-import {
-  mdiEmailOutline,
-  mdiAccount,
-  mdiEyeOutline,
-  mdiEyeOffOutline,
-  mdiCheckCircle,
-  mdiCloseCircle,
-} from "@mdi/js";
+import { mdiEmailOutline, mdiAccount, mdiEyeOutline, mdiEyeOffOutline, mdiCheckCircle, mdiCloseCircle } from "@mdi/js";
 
 function Input(props: {
   icon?: string;
@@ -66,16 +59,13 @@ function Input(props: {
           const isLengthOk = inputValue.length > 5;
           const hasNumber = /[0-9]/g.test(inputValue);
           const hasUppercase = /[A-Z]/g.test(inputValue);
-          const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/g.test(
-            inputValue
-          );
+          const hasSymbol = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/g.test(inputValue);
           setIsLetterQtyPasswordOk(isLengthOk);
           setIsOneLetterNumberOk(hasNumber);
           setIsOneLetterUppercaseOk(hasUppercase);
           setIsOneLetterSymbolOk(hasSymbol);
 
-          const isPasswordValid =
-            isLengthOk && hasNumber && hasUppercase && hasSymbol;
+          const isPasswordValid = isLengthOk && hasNumber && hasUppercase && hasSymbol;
           if (isPasswordValid) {
             setIsBorderRed(false);
             setIsBorderGreen(true);
@@ -106,43 +96,21 @@ function Input(props: {
         <input
           type={icon == "password" && !showPassword ? "password" : "text"}
           className={`w-full rounded-md border-2 ${
-            isBorderRed
-              ? "border-red-500"
-              : isBorderGreen
-              ? "border-green-600"
-              : "border-gray-300"
+            isBorderRed ? "border-red-500" : isBorderGreen ? "border-green-600" : "border-gray-300"
           } bg-transparent py-2 pl-3 pr-11`}
           placeholder={placeholder}
           onInput={handleInputValue}
         />
         {showIcon &&
-          ((icon == "email" && (
-            <Icon
-              path={mdiEmailOutline}
-              size={1}
-              className="absolute right-3 top-2"
-            />
-          )) ||
-            (icon == "name" && (
-              <Icon
-                path={mdiAccount}
-                size={1}
-                className="absolute right-3 top-2"
-              />
-            )) ||
+          ((icon == "email" && <Icon path={mdiEmailOutline} size={1} className="absolute right-3 top-2" />) ||
+            (icon == "name" && <Icon path={mdiAccount} size={1} className="absolute right-3 top-2" />) ||
             (icon == "password" &&
               (showPassword ? (
-                <div
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2 cursor-pointer"
-                >
+                <div onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-2 cursor-pointer">
                   <Icon path={mdiEyeOutline} size={1} />
                 </div>
               ) : (
-                <div
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2 cursor-pointer"
-                >
+                <div onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-2 cursor-pointer">
                   <Icon path={mdiEyeOffOutline} size={1} />
                 </div>
               ))))}
@@ -153,10 +121,7 @@ function Input(props: {
             className={`flex items-center mt-3
             ${isLettersQtyNameOk ? "text-green-600" : "text-red-500"}`}
           >
-            <Icon
-              path={isLettersQtyNameOk ? mdiCheckCircle : mdiCloseCircle}
-              size={1}
-            ></Icon>
+            <Icon path={isLettersQtyNameOk ? mdiCheckCircle : mdiCloseCircle} size={1}></Icon>
             <span className="ml-1">Mínimo de 2 caracteres</span>
           </p>
         )) ||
@@ -165,10 +130,7 @@ function Input(props: {
               className={`flex items-center mt-3
             ${isEmailOk ? "text-green-600" : "text-red-500"}`}
             >
-              <Icon
-                path={isEmailOk ? mdiCheckCircle : mdiCloseCircle}
-                size={1}
-              ></Icon>
+              <Icon path={isEmailOk ? mdiCheckCircle : mdiCloseCircle} size={1}></Icon>
               <span className="ml-1">Email válido</span>
             </p>
           )) ||
@@ -176,50 +138,30 @@ function Input(props: {
             <div className="mt-3 space-y-1">
               <p
                 className={`flex items-center
-                  ${
-                    isOneLetterUppercaseOk ? "text-green-600" : "text-red-500"
-                  }`}
+                  ${isOneLetterUppercaseOk ? "text-green-600" : "text-red-500"}`}
               >
-                <Icon
-                  path={
-                    isOneLetterUppercaseOk ? mdiCheckCircle : mdiCloseCircle
-                  }
-                  size={1}
-                ></Icon>
+                <Icon path={isOneLetterUppercaseOk ? mdiCheckCircle : mdiCloseCircle} size={1}></Icon>
                 <span className="ml-1">Mínimo de 1 letra maiúscula</span>
               </p>
               <p
                 className={`flex items-center
                   ${isOneLetterNumberOk ? "text-green-600" : "text-red-500"}`}
               >
-                <Icon
-                  path={isOneLetterNumberOk ? mdiCheckCircle : mdiCloseCircle}
-                  size={1}
-                ></Icon>
+                <Icon path={isOneLetterNumberOk ? mdiCheckCircle : mdiCloseCircle} size={1}></Icon>
                 <span className="ml-1">Mínimo de 1 número</span>
               </p>
               <p
                 className={`flex items-center
                   ${isOneLetterSymbolOk ? "text-green-600" : "text-red-500"}`}
               >
-                <Icon
-                  path={isOneLetterSymbolOk ? mdiCheckCircle : mdiCloseCircle}
-                  size={1}
-                ></Icon>
+                <Icon path={isOneLetterSymbolOk ? mdiCheckCircle : mdiCloseCircle} size={1}></Icon>
                 <span className="ml-1">Mínimo de 1 caracter especial</span>
               </p>
               <p
                 className={`flex items-center
-                  ${
-                    isLettersQtyPasswordOk ? "text-green-600" : "text-red-500"
-                  }`}
+                  ${isLettersQtyPasswordOk ? "text-green-600" : "text-red-500"}`}
               >
-                <Icon
-                  path={
-                    isLettersQtyPasswordOk ? mdiCheckCircle : mdiCloseCircle
-                  }
-                  size={1}
-                ></Icon>
+                <Icon path={isLettersQtyPasswordOk ? mdiCheckCircle : mdiCloseCircle} size={1}></Icon>
                 <span className="ml-1">Mímino de 6 caracteres</span>
               </p>
             </div>

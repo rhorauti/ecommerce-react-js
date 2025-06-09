@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { TAG } from "@src/core/enums/tag";
 import { useDispatch } from "react-redux";
 import { saveCartItemToLocalStorage, showCart } from "@src/store/cart.store";
-import { removeWishListItem, saveWishListItemsToLocalStorage } from "@src/store/wish-list.store";
+import { removeWishListItem, saveWishListItemsToLocalStorage } from "@src/store/wishList.store";
 
 function ProductCard(props: { productInfo: IProduct }) {
   const [product, setProduct] = useState<IProduct>(props.productInfo);
@@ -77,20 +77,14 @@ function ProductCard(props: { productInfo: IProduct }) {
         </div>
 
         <div className="flex gap-2 items-center absolute bottom-3 left-4">
-          {product && product.price && product.discount && product.discount > 0 && (
+          {product && product.price && (
             <span className="font-bold text-lg">
-              R${" "}
-              {product && product.price && product.discount
-                ? (product?.price - product?.price * (product?.discount / 100)).toFixed(2)
-                : 0}
+              R$ {product && product.price ? (product?.price - product?.price * 1.19).toFixed(2) : 0}
             </span>
           )}
           <span className="text-slate-400 font-semibold line-through">R$ {product.price}</span>
         </div>
-        <div
-          onClick={() => onAddCartItem(product)}
-          className="absolute right-3 bottom-3 cursor-pointer"
-        >
+        <div onClick={() => onAddCartItem(product)} className="absolute right-3 bottom-3 cursor-pointer">
           <Icon path={mdiCartPlus} size={1.5} className="bg-black text-white p-2 rounded-full" />
         </div>
       </div>

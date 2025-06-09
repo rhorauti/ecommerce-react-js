@@ -1,6 +1,6 @@
 import Slider from "react-slick";
-import "./carousel.css";
-import { ReactNode } from "react";
+import "./Carousel.css";
+import React, { ReactNode } from "react";
 
 function Arrow(props: any) {
   const { className, style, onClick } = props;
@@ -8,7 +8,7 @@ function Arrow(props: any) {
 }
 
 const Carousel: React.FC<{ children: ReactNode }> = ({ children }) => {
-  var settings = {
+  const settings = {
     dots: false,
     infinite: true,
     speed: 500,

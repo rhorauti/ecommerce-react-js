@@ -1,6 +1,7 @@
 export interface IProduct {
   id: string;
   img?: string;
+  category: string;
   title: string;
   qty: number;
   description?: string;
@@ -9,7 +10,6 @@ export interface IProduct {
   sales: number;
   tag?: number;
   price: number;
-  discount: number;
 }
 
 export enum PromotionTag {

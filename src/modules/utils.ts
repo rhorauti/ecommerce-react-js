@@ -1,12 +1,9 @@
 function safeEncryptU(str: string): string {
   try {
     // Converter caracteres especiais para formato seguro
-    const safeStr = encodeURIComponent(str).replace(
-      /%([0-9A-F]{2})/g,
-      function toSolidBytes(_, p1) {
-        return String.fromCharCode(Number("0x" + p1));
-      }
-    );
+    const safeStr = encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(_, p1) {
+      return String.fromCharCode(Number("0x" + p1));
+    });
     return btoa(safeStr);
   } catch (e) {
     return str; // Retorna string original em caso de erro
@@ -52,7 +49,7 @@ export function removeStorage(storage: STORAGE_TYPE) {
 }
 
 /** Verifica se o CPF é válido */
-export function isCPFValid(cpf: String) {
+export function isCPFValid(cpf: string) {
   if (cpf == null) return false;
   cpf = cpf.replace(/[^\d]+/g, "");
   if (cpf == "") return false;
@@ -70,34 +67,34 @@ export function isCPFValid(cpf: String) {
     cpf == "99999999999"
   )
     return false;
-  var add = 0;
-  for (var i = 0; i < 9; i++) add += parseInt(cpf.charAt(i)) * (10 - i);
-  var rev = 11 - (add % 11);
+  let add = 0;
+  for (let i = 0; i < 9; i++) add += parseInt(cpf.charAt(i)) * (10 - i);
+  let rev = 11 - (add % 11);
   if (rev == 10 || rev == 11) rev = 0;
   if (rev != parseInt(cpf.charAt(9))) return false;
   add = 0;
-  for (i = 0; i < 10; i++) add += parseInt(cpf.charAt(i)) * (11 - i);
+  for (let i = 0; i < 10; i++) add += parseInt(cpf.charAt(i)) * (11 - i);
   rev = 11 - (add % 11);
   if (rev == 10 || rev == 11) rev = 0;
   if (rev != parseInt(cpf.charAt(10))) return false;
   return true;
 }
 
-export function isCNPJValid(cnpj: String) {
-  var b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-  var c = String(cnpj).replace(/[^\d]/g, "");
-  if (c.length !== 14) return false;
+// export function isCNPJValid(cnpj: string) {
+//   const b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+//   const c = String(cnpj).replace(/[^\d]/g, "");
+//   if (c.length !== 14) return false;
 
-  if (/0{14}|1{14}|2{14}|3{14}|4{14}|5{14}|6{14}|7{14}|8{14}|9{14}/.test(c)) return false;
+//   if (/0{14}|1{14}|2{14}|3{14}|4{14}|5{14}|6{14}|7{14}|8{14}|9{14}/.test(c)) return false;
 
-  for (var i = 0, n = 0; i < 12; n += parseInt(c[i]) * b[++i]);
-  if (parseInt(c[12]) != ((n %= 11) < 2 ? 0 : 11 - n)) return false;
+//   for (let i = 0, n = 0; i < 12; n += parseInt(c[i]) * b[++i]);
+//   if (parseInt(c[12]) != ((n %= 11) < 2 ? 0 : 11 - n)) return false;
 
-  for (var i = 0, n = 0; i <= 12; n += parseInt(c[i]) * b[i++]);
-  if (parseInt(c[13]) != ((n %= 11) < 2 ? 0 : 11 - n)) return false;
+//   for (let i = 0, n = 0; i <= 12; n += parseInt(c[i]) * b[i++]);
+//   if (parseInt(c[13]) != ((n %= 11) < 2 ? 0 : 11 - n)) return false;
 
-  return true;
-}
+//   return true;
+// }
 
 /**
  * isNomeValid
@@ -137,8 +134,7 @@ export function isNullOrWhitespace(info: string | null) {
 export function formatCpfOrCnpj(value: string): string {
   if (!value) return "";
   if (value.length === 11) return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-  if (value.length === 14)
-    return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+  if (value.length === 14) return value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
   return "";
 }
 
