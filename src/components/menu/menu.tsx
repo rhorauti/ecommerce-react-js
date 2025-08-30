@@ -70,7 +70,7 @@ function Menu() {
 
   const filterProductsInfo = useMemo(() => {
     const trimmedInput = inputValue.trim().toLowerCase();
-    if (!trimmedInput || inputValue.length == 0) return [];
+    if (!trimmedInput || trimmedInput.length == 0) return [];
     return productsInfo.filter((product) => product.title.includes(trimmedInput));
   }, [productsInfo, inputValue]);
 
@@ -86,7 +86,7 @@ function Menu() {
   function onSearchButtonClick(idx: number): void {
     setShowInputOptionsBox(false);
     if (!filterProductsInfo[idx] && inputValue.length == 0) {
-      return;
+      navigate(`/product-list/search?description=Todos`);
     } else if (filterProductsInfo[idx] && filterProductsInfo[idx].title.length > 0) {
       navigate(`/product-list/search?description=${filterProductsInfo[idx].title}`);
     } else {

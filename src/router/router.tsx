@@ -10,7 +10,9 @@ const PasswordRecover = lazy(() => import("@src/pages/Auth/PasswordRecover/Passw
 const NewPassword = lazy(() => import("@src/pages/Auth/NewPassword/NewPassword"));
 const RedirectPage = lazy(() => import("@src/pages/Auth/Redirect/Redirect"));
 const WishList = lazy(() => import("@src/pages/WishList/WishList"));
+const MyAccount = lazy(() => import("@src/pages/MyAccount/MyAccount"));
 const ProductList = lazy(() => import("@src/pages/ProductList/ProductList"));
+const ProductDetails = lazy(() => import("@src/pages/ProductDetails/ProductDetails"));
 const Cart = lazy(() => import("@src/pages/Cart/Cart"));
 const AdmProducts = lazy(() => import("@src/pages/Adm/AdmProducts/AdmProducts"));
 
@@ -81,10 +83,26 @@ const RoutesApp = () => {
       ),
     },
     {
+      path: "/my-account",
+      element: (
+        <Suspense fallback={<Loading isLoading={true} />}>
+          <MyAccount />
+        </Suspense>
+      ),
+    },
+    {
       path: "/product-list/search",
       element: (
         <Suspense fallback={<Loading isLoading={true} />}>
           <ProductList />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/product-details/:idProduct",
+      element: (
+        <Suspense fallback={<Loading isLoading={true} />}>
+          <ProductDetails />
         </Suspense>
       ),
     },
