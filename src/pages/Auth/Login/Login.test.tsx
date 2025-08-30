@@ -4,10 +4,10 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
-import Login from "./Login"; // Ajuste o caminho conforme necessário
-import { authenticateUser } from "@src/core/http/auth/userAuth";
+import Login from "@pages/Auth/Login/Login"; // Ajuste o caminho conforme necessário
+import { authenticateUser } from "@core/http/auth/userAuth";
 // Importe as actions reais para usar nas asserções
-import { getToken, hideMenuBar, setUserData, showMenuBar } from "@src/store/auth.store";
+import { getToken, hideMenuBar, setUserData, showMenuBar } from "@store/auth.store";
 import React from "react";
 
 // --- MOCKS ---

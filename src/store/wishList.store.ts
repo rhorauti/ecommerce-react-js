@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IProduct } from "@src/core/interfaces/IProduct";
+import { IProduct } from "@core/interfaces/IProduct";
 import { loadStorage, saveStorage, STORAGE_TYPE } from "@src/modules/utils";
 
 const initialState = {

@@ -1,9 +1,9 @@
 import { useLocation } from "react-router-dom";
-import Footer from "./components/Footer/Footer";
-import Menu from "./components/Menu/Menu";
-import RoutesApp from "./router/router";
-import SideCart from "./components/SideCart/SidecCart";
-import { ProductProvider } from "./context/productsContext";
+import Footer from "@components/Footer/Footer";
+import Menu from "@components/Menu/Menu";
+import RoutesApp from "@router/router";
+import SideCart from "@components/SideCart/SidecCart";
+import { ProductProvider } from "@context/productsContext";
 
 function App() {
   const location = useLocation();

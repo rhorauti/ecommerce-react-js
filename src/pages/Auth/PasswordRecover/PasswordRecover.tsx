@@ -1,9 +1,9 @@
-import Button from "@src/components/Button/Button";
-import Input from "@src/components/Input/Input";
-import Loading from "@src/components/Loading/Loading";
-import ModalInfo from "@src/components/Modal/ModalInfo";
-import { sendEmailRecover } from "@src/core/http/auth/userAuth";
-import { IAxiosErrorResponse } from "@src/core/interfaces/IAxiosResponse";
+import Button from "@components/Button/Button";
+import Input from "@components/Input/Input";
+import Loading from "@components/Loading/Loading";
+import ModalInfo from "@components/Modal/ModalInfo";
+import { sendEmailRecover } from "@core/http/auth/userAuth";
+import { IAxiosErrorResponse } from "@core/interfaces/IAxiosResponse";
 import { useState } from "react";
 import { Link, redirect } from "react-router-dom";
 

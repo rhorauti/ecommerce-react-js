@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Badge from "./Badge";
+import Badge from "@components/Badge/Badge";
 
 describe("Badge Component", () => {
   const baseClasses = ["absolute", "-top-1", "-right-3", "bg-red-600", "text-xs", "rounded-full", "px-1", "text-white"];

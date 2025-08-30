@@ -1,11 +1,11 @@
 import Icon from "@mdi/react";
 import { mdiCartPlus, mdiHeart, mdiHeartOutline, mdiLightningBolt, mdiStar } from "@mdi/js";
-import { IProduct as IProduct } from "@src/core/interfaces/IProduct";
+import { IProduct as IProduct } from "@core/interfaces/IProduct";
 import { useEffect, useState } from "react";
-import { TAG } from "@src/core/enums/tag";
+import { TAG } from "@core/enums/tag";
 import { useDispatch } from "react-redux";
-import { saveCartItemToLocalStorage, showCart } from "@src/store/cart.store";
-import { removeWishListItem, saveWishListItemsToLocalStorage } from "@src/store/wishList.store";
+import { saveCartItemToLocalStorage, showCart } from "@store/cart.store";
+import { removeWishListItem, saveWishListItemsToLocalStorage } from "@store/wishList.store";
 
 function ProductCard(props: { productInfo: IProduct }) {
   const [product, setProduct] = useState<IProduct>(props.productInfo);

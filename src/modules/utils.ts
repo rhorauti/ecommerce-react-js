@@ -105,7 +105,7 @@ export function isCPFValid(cpf: string) {
  * - 1 espaço em branco em cada bloco
  */
 export function isNomeValid(nome: string) {
-  return /^[A-Za-zÀ-ÖØ-öø-ÿ\']{2,}(\s[A-Za-zÀ-ÖØ-öø-ÿ\']{1,}){0,10}$/g.test(nome);
+  return /^[A-Za-zÀ-ÖØ-öø-ÿ']{2,}(\s[A-Za-zÀ-ÖØ-öø-ÿ']{1,}){0,10}$/g.test(nome);
 }
 
 /**

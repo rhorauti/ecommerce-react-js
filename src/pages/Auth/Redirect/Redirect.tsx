@@ -1,6 +1,6 @@
-import Button from "@src/components/Button/Button";
-import { checkValidToken } from "@src/core/http/auth/userAuth";
-import { IAxiosErrorResponse } from "@src/core/interfaces/IAxiosResponse";
+import Button from "@components/Button/Button";
+import { checkValidToken } from "@core/http/auth/userAuth";
+import { IAxiosErrorResponse } from "@core/interfaces/IAxiosResponse";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 

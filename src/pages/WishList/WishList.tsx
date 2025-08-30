@@ -1,14 +1,14 @@
 import { mdiCartOutline, mdiTrashCan } from "@mdi/js";
 import Icon from "@mdi/react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppState } from "@src/store/store";
+import { AppState } from "@store/store";
 import { useEffect, useState } from "react";
-import Title from "@src/components/Title/Title";
-import Button from "@src/components/Button/Button";
-import { getWishListItemsFromLocalStorage, removeWishListItem } from "@src/store/wishList.store";
-import { IProduct } from "@src/core/interfaces/IProduct";
-import { saveAllWishListItemsToCartLocalStorage, saveCartItemToLocalStorage, showCart } from "@src/store/cart.store";
-import Loading from "@src/components/Loading/Loading";
+import Title from "@components/Title/Title";
+import Button from "@components/Button/Button";
+import { getWishListItemsFromLocalStorage, removeWishListItem } from "@store/wishList.store";
+import { IProduct } from "@core/interfaces/IProduct";
+import { saveAllWishListItemsToCartLocalStorage, saveCartItemToLocalStorage, showCart } from "@store/cart.store";
+import Loading from "@components/Loading/Loading";
 
 function WishList() {
   const dispatch = useDispatch();

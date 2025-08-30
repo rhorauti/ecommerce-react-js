@@ -1,20 +1,20 @@
 import { useRoutes, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import Loading from "@src/components/Loading/Loading";
-import ProtectedRoute from "@src/components/ProtectedRoute/ProtectedRoute";
+import Loading from "@components/Loading/Loading";
+import ProtectedRoute from "@components/ProtectedRoute/ProtectedRoute";
 
-const Home = lazy(() => import("@src/pages/Home/Home"));
-const Signup = lazy(() => import("@src/pages/Auth/Signup/Signup"));
-const Login = lazy(() => import("@src/pages/Auth/Login/Login"));
-const PasswordRecover = lazy(() => import("@src/pages/Auth/PasswordRecover/PasswordRecover"));
-const NewPassword = lazy(() => import("@src/pages/Auth/NewPassword/NewPassword"));
-const RedirectPage = lazy(() => import("@src/pages/Auth/Redirect/Redirect"));
-const WishList = lazy(() => import("@src/pages/WishList/WishList"));
-const MyAccount = lazy(() => import("@src/pages/MyAccount/MyAccount"));
-const ProductList = lazy(() => import("@src/pages/ProductList/ProductList"));
-const ProductDetails = lazy(() => import("@src/pages/ProductDetails/ProductDetails"));
-const Cart = lazy(() => import("@src/pages/Cart/Cart"));
-const AdmProducts = lazy(() => import("@src/pages/Adm/AdmProducts/AdmProducts"));
+const Home = lazy(() => import("@pages/Home/Home"));
+const Signup = lazy(() => import("@pages/Auth/Signup/Signup"));
+const Login = lazy(() => import("@pages/Auth/Login/Login"));
+const PasswordRecover = lazy(() => import("@pages/Auth/PasswordRecover/PasswordRecover"));
+const NewPassword = lazy(() => import("@pages/Auth/NewPassword/NewPassword"));
+const RedirectPage = lazy(() => import("@pages/Auth/Redirect/Redirect"));
+const WishList = lazy(() => import("@pages/WishList/WishList"));
+const MyAccount = lazy(() => import("@pages/MyAccount/MyAccount"));
+const ProductList = lazy(() => import("@pages/ProductList/ProductList"));
+const ProductDetails = lazy(() => import("@pages/ProductDetails/ProductDetails"));
+const Cart = lazy(() => import("@pages/Cart/Cart"));
+const AdmProducts = lazy(() => import("@pages/Adm/AdmProducts/AdmProducts"));
 
 const RoutesApp = () => {
   const routes = useRoutes([

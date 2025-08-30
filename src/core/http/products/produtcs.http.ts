@@ -1,7 +1,7 @@
-import HttpMethodType from "@src/core/enums/httpMethod";
-import { httpRequest } from "../httpRequest";
-import { IProduct } from "@src/core/interfaces/IProduct";
-import { IAxiosResponse } from "@src/core/interfaces/IAxiosResponse";
+import HttpMethodType from "@core/enums/httpMethod";
+import { httpRequest } from "@core/http/httpRequest";
+import { IProduct } from "@core/interfaces/IProduct";
+import { IAxiosResponse } from "@core/interfaces/IAxiosResponse";
 
 const apiURL = import.meta.env.VITE_API_URL;
 

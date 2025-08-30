@@ -1,13 +1,9 @@
 import axios from "axios";
-import HttpMethodType from "../enums/httpMethod";
-import { store } from "@src/store/store";
-import { getToken } from "@src/store/auth.store";
+import HttpMethodType from "@core/enums/httpMethod";
+import { store } from "@store/store";
+import { getToken } from "@store/auth.store";
 
-export async function httpRequest(
-  url: string,
-  httpMethodType = HttpMethodType.GET,
-  data: any = ""
-): Promise<any> {
+export async function httpRequest(url: string, httpMethodType = HttpMethodType.GET, data: any = ""): Promise<any> {
   return await axios({
     url: url,
     method: httpMethodType,

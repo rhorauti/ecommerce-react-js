@@ -18,7 +18,7 @@
     "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
@@ -26,12 +26,13 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"],
-      "@src/assets/*": ["src/assets/*"],
-      "@src/components/*": ["src/components/*"],
-      "@src/core/*": ["src/core/*"],
-      "@src/pages/*": ["src/pages/*"],
-      "@src/router/*": ["src/router/*"],
-      "@src/store/*": ["src/store/*"]
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@core/*": ["src/core/*"],
+      "@pages/*": ["src/pages/*"],
+      "@router/*": ["src/router/*"],
+      "@store/*": ["src/store/*"],
+      "@context/*": ["src/context/*"]
     }
   },
   "include": ["src"],

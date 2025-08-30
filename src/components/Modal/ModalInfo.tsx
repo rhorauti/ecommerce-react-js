@@ -1,7 +1,7 @@
 import { mdiCheckCircleOutline, mdiCloseOctagon } from "@mdi/js";
 import Icon from "@mdi/react";
 import { useEffect, useState } from "react";
-import Button from "../Button/Button";
+import Button from "@components/Button/Button";
 
 function ModalInfo(props: {
   iconType: string;

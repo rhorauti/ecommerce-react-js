@@ -1,10 +1,10 @@
 import { mdiClose, mdiMinus, mdiPlus, mdiTrashCan } from "@mdi/js";
 import Icon from "@mdi/react";
-import Button from "../Button/Button";
+import Button from "@components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { onChangeQty, onDecreaseQty, onIncreaseQty, removeCartItem, showCart } from "@src/store/cart.store";
-import { getCartItemsFromLocalStorage } from "@src/store/cart.store";
-import { AppState } from "@src/store/store";
+import { onChangeQty, onDecreaseQty, onIncreaseQty, removeCartItem, showCart } from "@store/cart.store";
+import { getCartItemsFromLocalStorage } from "@store/cart.store";
+import { AppState } from "@store/store";
 import { useEffect, useRef } from "react";
 
 function SideCart() {

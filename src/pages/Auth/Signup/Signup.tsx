@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "@src/components/Button/Button";
-import { IRequestSignup } from "@src/core/interfaces/IAuthUser";
-import { createUser } from "@src/core/http/auth/userAuth";
-import Input from "@src/components/Input/Input";
-import ModalInfo from "@src/components/Modal/ModalInfo";
-import Loading from "@src/components/Loading/Loading";
+import Button from "@components/Button/Button";
+import { IRequestSignup } from "@core/interfaces/IAuthUser";
+import { createUser } from "@core/http/auth/userAuth";
+import Input from "@components/Input/Input";
+import ModalInfo from "@components/Modal/ModalInfo";
+import Loading from "@components/Loading/Loading";
 import { AxiosError } from "axios";
-import { IAxiosErrorResponse } from "@src/core/interfaces/IAxiosResponse";
+import { IAxiosErrorResponse } from "@core/interfaces/IAxiosResponse";
 
 function Signup() {
   const [isLoading, setIsLoading] = useState(false);

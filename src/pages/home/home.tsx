@@ -1,13 +1,13 @@
-import Carousel from "@src/components/Carousel/Carousel";
-import CardGrid from "@src/components/CardGrid/CardGrid";
+import Carousel from "@components/Carousel/Carousel";
+import CardGrid from "@components/CardGrid/CardGrid";
 import { useEffect, useState } from "react";
-import { getProductsList } from "@src/core/http/products/produtcs.http";
+import { getProductsList } from "@core/http/products/produtcs.http";
 import Icon from "@mdi/react";
 import { mdiArrowRight } from "@mdi/js";
-import Loading from "@src/components/Loading/Loading";
-import { useProducts } from "@src/context/productsContext";
-import { IProduct } from "@src/core/interfaces/IProduct";
-import ProductCard from "@src/components/Card/ProductCard";
+import Loading from "@components/Loading/Loading";
+import { useProducts } from "@context/productsContext";
+import { IProduct } from "@core/interfaces/IProduct";
+import ProductCard from "@components/Card/ProductCard";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(false);

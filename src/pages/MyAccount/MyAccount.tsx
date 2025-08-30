@@ -1,6 +1,6 @@
 import { mdiHeart } from "@mdi/js";
 import Icon from "@mdi/react";
-import Title from "@src/components/Title/Title";
+import Title from "@components/Title/Title";
 import { useState } from "react";
 
 interface IItem {

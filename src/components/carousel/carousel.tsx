@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import "./Carousel.css";
+import "@components/Carousel/Carousel.css";
 import React, { ReactNode } from "react";
 
 function Arrow(props: any) {

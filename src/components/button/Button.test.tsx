@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-import Button from "./Button";
+import Button from "@components/Button/Button";
 
 describe("Button Component", () => {
   const baseClasses = ["rounded-lg", "p-2", "font-semibold", "text-white", "disabled:bg-gray-400"];

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "@src/components/Button/Button";
-import { IRequestLogin } from "@src/core/interfaces/IAuthUser";
-import { authenticateUser } from "@src/core/http/auth/userAuth";
-import Input from "@src/components/Input/Input";
-import ModalInfo from "@src/components/Modal/ModalInfo";
-import Loading from "@src/components/Loading/Loading";
-import { IAxiosErrorResponse } from "@src/core/interfaces/IAxiosResponse";
-import { store } from "@src/store/store";
-import { getToken, hideMenuBar, setUserData, showMenuBar } from "@src/store/auth.store";
+import Button from "@components/Button/Button";
+import { IRequestLogin } from "@core/interfaces/IAuthUser";
+import { authenticateUser } from "@core/http/auth/userAuth";
+import Input from "@components/Input/Input";
+import ModalInfo from "@components/Modal/ModalInfo";
+import Loading from "@components/Loading/Loading";
+import { IAxiosErrorResponse } from "@core/interfaces/IAxiosResponse";
+import { store } from "@store/store";
+import { getToken, hideMenuBar, setUserData, showMenuBar } from "@store/auth.store";
 
 function Login() {
   const [isLoading, setIsLoading] = useState(false);

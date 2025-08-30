@@ -1,9 +1,9 @@
-import Button from "@src/components/Button/Button";
-import Input from "@src/components/Input/Input";
-import Loading from "@src/components/Loading/Loading";
-import ModalInfo from "@src/components/Modal/ModalInfo";
-import { updateUserPassword } from "@src/core/http/auth/userAuth";
-import { IAxiosErrorResponse } from "@src/core/interfaces/IAxiosResponse";
+import Button from "@components/Button/Button";
+import Input from "@components/Input/Input";
+import Loading from "@components/Loading/Loading";
+import ModalInfo from "@components/Modal/ModalInfo";
+import { updateUserPassword } from "@core/http/auth/userAuth";
+import { IAxiosErrorResponse } from "@core/interfaces/IAxiosResponse";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 

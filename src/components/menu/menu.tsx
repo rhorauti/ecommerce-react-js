@@ -15,7 +15,7 @@ import { showCart } from "@src/store/cart.store";
 import { AppState, store } from "@src/store/store";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Badge from "../Badge/Badge";
+import Badge from "@components/Badge/Badge";
 import { Link, useNavigate } from "react-router-dom";
 import { getWishListItemsFromLocalStorage } from "@src/store/wishList.store";
 import { useProducts } from "@src/context/productsContext";

@@ -1,8 +1,8 @@
-import ProductCard from "@src/components/Card/ProductCard";
-import CardGrid from "@src/components/CardGrid/CardGrid";
-import Loading from "@src/components/Loading/Loading";
-import Title from "@src/components/Title/Title";
-import { useProducts } from "@src/context/productsContext";
+import ProductCard from "@components/Card/ProductCard";
+import CardGrid from "@components/CardGrid/CardGrid";
+import Loading from "@components/Loading/Loading";
+import Title from "@components/Title/Title";
+import { useProducts } from "@context/productsContext";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 

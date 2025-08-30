@@ -1,4 +1,4 @@
-import HttpMethodType from "@src/core/enums/httpMethod";
+import HttpMethodType from "@core/enums/httpMethod";
 import {
   IRequestLogin,
   IRequestSignup,
@@ -6,8 +6,8 @@ import {
   IResponseEmailRecover,
   IResponseLogin,
   IResponseSignup,
-} from "@src/core/interfaces/IAuthUser";
-import { httpRequest } from "../httpRequest";
+} from "@core/interfaces/IAuthUser";
+import { httpRequest } from "@core/http/httpRequest";
 
 const apiURL = import.meta.env.VITE_API_URL;
 
@@ -25,15 +25,8 @@ export async function sendEmailRecover(email: string): Promise<IResponseEmailRec
   });
 }
 
-export async function updateUserPassword(
-  password: string,
-  token: string
-): Promise<IResponseSignup> {
-  return await httpRequest(
-    `${apiURL}/user/new-password?token=${token}`,
-    HttpMethodType.PUT,
-    { password: password }
-  );
+export async function updateUserPassword(password: string, token: string): Promise<IResponseSignup> {
+  return await httpRequest(`${apiURL}/user/new-password?token=${token}`, HttpMethodType.PUT, { password: password });
 }
 
 export async function checkValidToken(token: string): Promise<IResponseCheckToken> {
